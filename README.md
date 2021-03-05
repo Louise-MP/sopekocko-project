@@ -1,1 +1,0 @@
-# sopekocko-project
