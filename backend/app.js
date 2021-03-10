@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+// const sauceRoutes = require('./routes/sauce');
+// const authRoutes = require('./routes/auth');
 
 mongoose.connect('mongodb+srv://louise-mpl:meloup@cluster0.0zxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
 { useNewUrlParser: true,
@@ -21,13 +23,11 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json()); 
 
-app.use((req, res, next) => {
-	console.log('Requête reçue');
-	next();
-});
+// app.use('/api/sauces', sauceRoutes);
+// app.use('/api/auth', authRoutes);
 
 app.use((req, res, next) => {
-    res.json({ message: 'Requête bien reçu'}); 
+    res.json({ message: 'Requête bien reçu !!'}); 
 });
 
 
