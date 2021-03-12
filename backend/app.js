@@ -2,13 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-// const sauceRoutes = require('./routes/sauce');
-// const authRoutes = require('./routes/auth');
+const path = require('path'); // routes images 
+
+const sauceRoutes = require('./routes/sauce');
+const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb+srv://louise-mpl:meloup@cluster0.0zxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
 { useNewUrlParser: true,
 useUnifiedTopology: true })
-.then(() => console.log('Connexion MongoDB reussie'))
+.then(() => console.log('Connexion MongoDB réussie'))
 .catch(() => console.log('Connexion échouée'))
 
 const app = express();
@@ -23,12 +25,15 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json()); 
 
-// app.use('/api/sauces', sauceRoutes);
-// app.use('/api/auth', authRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use((req, res, next) => {
-    res.json({ message: 'Requête bien reçu !!'}); 
-});
+app.use('/api/sauces', sauceRoutes);
+app.use('/api/auth', userRoutes);
 
 
-module.exports = app; 
+// app.use((req, res, next) => {
+//     res.json({ message: 'Requête bien reçu !!'}); 
+//  });
+
+
+ module.exports = app; 

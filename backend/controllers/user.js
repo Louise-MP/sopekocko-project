@@ -1,20 +1,26 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const Auth = require('../models/Auth');
+const User = require('../models/User');
 
 exports.signup = (req, res, next) => {
+  // const errors = validationResult(req);
+	// if(!errors.isEmpty()){
+	// 	logger.info('User tried to signup with invalid email and/or password');
+	// 	return res.status(422).json({ errors: errors.array() 
+  //   });
+  // }
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
-        const auth = new Auth({
+        const user = new User({
             email: req.body.email,
             password: hash
         });
-        auth.save()
+        user.save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé' }))
-        .catch(error => res.status(400).json({ erreur }));
+        .catch(error => res.status(400).json({ error }));
     })
-    .catch(error => res.status(500).json({ erreur }));
+    .catch(error => res.status(500).json({ error }));
 };
 
 exports.login = (req, res, next) => {
@@ -41,3 +47,10 @@ exports.login = (req, res, next) => {
       })
       .catch(error => res.status(500).json({ error }));
 };
+
+
+
+
+
+
+
