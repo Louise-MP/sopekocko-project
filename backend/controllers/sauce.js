@@ -12,6 +12,11 @@ exports.createSauce = (req, res, next) => {
   sauce.save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
       .catch(error => res.status(400).json({ error }));
+
+      sauceObject.likes = 0;  // à l'objet sauce on ajoute like à 0
+      sauceObject.dislikes = 0; // à l'objet sauce on ajoute dislike
+      sauceObject.usersLiked = Array(); // déclaration tableau des utilisateur qui aiment
+      sauceObject.usersDisliked = Array(); // déclaration tableau des utilisateur qui aiment pas
 };
 
 // modification d'une sauce 
@@ -58,3 +63,19 @@ exports.getAllSauces = (req, res, next) => {
 };
 
 // like et dislike
+exports.likeOrDislike = (req, res, next) => {
+  //si l'utilisateur aime la sauce
+  if (req.body.like === 1) {
+      //Ajoue 1 et le "push" vers tableau usersLiked
+      Sauce.updateOne({_id: req.params.id}, {$inc: {likes: req.body.like++}, $push: { usersLiked: req.body.userId}})
+          .then((sauce) => res.status(200).json({ message: 'Merci pour le like !'}))
+          .catch (error => res.status(400).json({error})) 
+  // si utilisateur aime pas la sauce
+  } else if (req.body.like === -1) {
+      // Retire 1 et le "push" vers tableau usersDisliked
+      Sauce.updateOne({_id: req.params.id}, { $inc: { dislikes: (req.body.like++) * -1}, $push: {usersdisliked: req.body.userId} })
+          .then((sauce) => res.status(200).json({ message: 'Jaime pas les dislikes'}))
+          .catch(error => res.status(400).json({error}))
+  }
+  
+};
