@@ -1,3 +1,4 @@
+// création du middleware d'authentification
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
@@ -10,7 +11,7 @@ module.exports = (req, res, next) => {
         } else {
           next();
         }
-      } catch (error) { // probleme d'autentification
+      } catch (error) { // erreur d'autentification
       res.status(401).json({ error: error | 'Requête non authentifiée !'
         });
       }

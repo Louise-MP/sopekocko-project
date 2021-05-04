@@ -3,13 +3,8 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
 
+// création de la fonction signup pour créer un utilisateur
 exports.signup = (req, res, next) => {
-  // const errors = validationResult(req);
-	// if(!errors.isEmpty()){
-	// 	logger.info('User tried to signup with invalid email and/or password');
-	// 	return res.status(422).json({ errors: errors.array() 
-  //   });
-  // }
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
         const user = new User({
@@ -23,6 +18,7 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+// création de la fonction login pour  retrouver l'utilisateur dans la bbd et le connecter
 exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
       .then(user => {

@@ -15,8 +15,8 @@ exports.createSauce = (req, res, next) => {
 
       sauceObject.likes = 0;  // à l'objet sauce on ajoute like à 0
       sauceObject.dislikes = 0; // à l'objet sauce on ajoute dislike
-      sauceObject.usersLiked = Array(); // déclaration tableau des utilisateur qui aiment
-      sauceObject.usersDisliked = Array(); // déclaration tableau des utilisateur qui aiment pas
+      sauceObject.usersLiked = Array(); // déclaration tableau des utilisateurs qui aiment
+      sauceObject.usersDisliked = Array(); // déclaration tableau des utilisateurs qui n'aiment pas
 };
 
 // modification d'une sauce 
@@ -48,14 +48,14 @@ exports.deleteSauce = (req, res, next) => {
       .catch(error => res.status(500).json({ error }));
 };
 
-// Récupère une seule sauce
+// récupère une seule sauce
 exports.getOneSauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
   .then(sauce => res.status(200).json(sauce))
   .catch(error => res.status(404).json({ error }));
 };
 
-//récupère toutes les sauces
+// récupère toutes les sauces
 exports.getAllSauces = (req, res, next) => {
   Sauce.find()
   .then(sauces => res.status(200).json(sauces))
@@ -64,15 +64,15 @@ exports.getAllSauces = (req, res, next) => {
 
 // like et dislike
 exports.likeOrDislike = (req, res, next) => {
-  //si l'utilisateur aime la sauce
+  // si l'utilisateur aime la sauce
   if (req.body.like === 1) {
-      //Ajoue 1 et le "push" vers tableau usersLiked
+      // ajoute 1 et "push" vers tableau usersLiked
       Sauce.updateOne({_id: req.params.id}, {$inc: {likes: req.body.like++}, $push: { usersLiked: req.body.userId}})
           .then((sauce) => res.status(200).json({ message: 'Merci pour le like !'}))
           .catch (error => res.status(400).json({error})) 
-  // si utilisateur aime pas la sauce
+  // si utilisateur n'aime pas la sauce
   } else if (req.body.like === -1) {
-      // Retire 1 et le "push" vers tableau usersDisliked
+      // retire 1 et "push" vers tableau usersDisliked
       Sauce.updateOne({_id: req.params.id}, { $inc: { dislikes: (req.body.like++) * -1}, $push: {usersdisliked: req.body.userId} })
           .then((sauce) => res.status(200).json({ message: 'Jaime pas les dislikes'}))
           .catch(error => res.status(400).json({error}))
