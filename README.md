@@ -14,13 +14,15 @@ Forte de son succès, l’entreprise souhaite se développer et créer une appli
 
  <pre>
 - consulter toutes les sauces enregistrées,
-- créer des sauces,
-- modifier les sauces qu'il a créé,
-- supprimer les sauces qu'il a crée,
+- créer de nouvelles sauces,
+- modifier les sauces,
+- supprimer les sauces,
 - liker ou disliker les sauces enregistrées sur le site.
 </pre>
-
-<h2>🏅 Objectif et compétences évaluées</h2>
+ 
+ <br>
+ 
+<h2>🏅 Compétences évaluées</h2>
 
 <p><em><strong>Le but est de créer le backend de l'application, le frontend étant déjà codé et fourni</strong></em></p>
 
@@ -31,20 +33,14 @@ Forte de son succès, l’entreprise souhaite se développer et créer une appli
   <li>Sécurité <strong>OWASP</strong> et <strong>RGPD</strong></li>
 </ul>
 
+ <br>
+
 <h2>Instructions relatives à l'API</h2>
 
 [Note de cadrage](https://s3.eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/P6_Note%20de%20cadrage%20So%20Pekocko_V3.pdf)<br>
 [Guidelines](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P6/Guidelines+API.pdf)
 
-
-<h2>Contenu du repository</h2>
-
-Pour récupérer le frontend séparément sur GitHub, [cliquez ici](https://github.com/OpenClassrooms-Student-Center/dwj-projet6).
-
-
-<ul>
-  <li>Contient le dossier <code>frontend</code> et le dossier <code>backend</code>. Possibilité de cloner ce repository pour récupérer en local, les parties frontend et backend de l'application.</li>
-</ul>
+ <br>
 
 <h2>🔨 Insctructions de lancement</h2>
 
@@ -77,6 +73,8 @@ Si les packages sont déjà installés, ces commandes suffisent à démarrer les
  - Se connecter à l'url : http://localhost:4200.
 </pre>
 
+ <br>
+
 <h2>🖥 Connexion</h2>
 
 Ouvrir [localhost:4200](https://localhost:4200) dans votre naviguateur.
@@ -86,4 +84,6 @@ Pour s'inscrire sur l'application, l'utilisateur doit fournir un email et un mot
 <hr>
 
 <p><strong>Hébergement sur MongDB Atlas. Toutes les opérations de la base de données utilisent le pack Mongoose, avec des schémas de données strictes</strong>.</p>
+
+ps: le travail présenté ici a été réalisé pour la partie backend. Pour la partie frontend, l'adresse du code original se trouve [ici](https://github.com/OpenClassrooms-Student-Center/dwj-projet6).
 
