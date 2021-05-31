@@ -21,19 +21,6 @@ Forte de son succès, l’entreprise souhaite se développer et créer une appli
 </pre>
  
  <br>
- 
-<h2>🏅 Compétences évaluées</h2>
-
-<p><em><strong>Le but est de créer le backend de l'application, le frontend étant déjà codé et fourni</strong></em></p>
-
-<ul>
-  <li>Implémenter un modèle logique de données conformément à la réglementation</li>
-  <li>Stocker des données de manière sécurisée</li>
-  <li>Mettre en œuvre des opérations CRUD de manière sécurisée</li>
-  <li>Sécurité <strong>OWASP</strong> et <strong>RGPD</strong></li>
-</ul>
-
- <br>
 
 <h2>Instructions relatives à l'API</h2>
 
@@ -46,13 +33,13 @@ Forte de son succès, l’entreprise souhaite se développer et créer une appli
 
 <h4>💡 Lancer le frontend</h4>
 
-Précision : il faut installer node-sass a part.
+Précision : il faut installer node-sass à part.
 
 Avec le terminal, aller dans le dossier <code>frontend</code> puis :
 
 <pre>
 - taper: "npm install",
-- puis: "npm start",
+- puis: "ng serve",
 - enfin: dans votre navigateur se rendre à l'adresse: http://localhost:4200 
 </pre>
 
@@ -68,7 +55,7 @@ Avec le terminal, aller dans le dossier <code>backend</code> puis :
 Si les packages sont déjà installés, ces commandes suffisent à démarrer les serveurs :
 
 <pre>
- - npm start via le terminal dans le dossier frontend.
+ - ng serve via le terminal dans le dossier frontend.
  - nodemon server via le terminal dans le dossier backend.
  - Se connecter à l'url : http://localhost:4200.
 </pre>
