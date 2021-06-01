@@ -1,15 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const helmet = require('helmet') ;
+const dotenv = require('dotenv').config();
 
 const path = require('path'); // routes images 
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://louise-mpl:meloup@cluster0.0zxud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
-{ useNewUrlParser: true,
-useUnifiedTopology: true })
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?retryWrites=true&w=majority`, 
+{ 
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+})
 .then(() => console.log('Connexion MongoDB réussie'))
 .catch(() => console.log('Connexion échouée'))
 
@@ -23,11 +27,11 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(helmet()) ; // helmet aide à sécuriser l'application Express en définissant divers en-têtes HTTP
 app.use(bodyParser.json()); 
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
+
 
  module.exports = app; 

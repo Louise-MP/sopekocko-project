@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/User');
 
 // création de la fonction signup pour créer un utilisateur
@@ -17,6 +16,7 @@ exports.signup = (req, res, next) => {
     })
     .catch(error => res.status(500).json({ error }));
 };
+
 
 // création de la fonction login pour  retrouver l'utilisateur dans la bbd et le connecter
 exports.login = (req, res, next) => {
@@ -43,10 +43,3 @@ exports.login = (req, res, next) => {
       })
       .catch(error => res.status(500).json({ error }));
 };
-
-
-
-
-
-
-
