@@ -1,5 +1,9 @@
 # sopekocko-project
 Projet 6 - Openclassrooms - Développeur web 
+<<<<<<< HEAD
+=======
+
+>>>>>>> da119f00a36a456a6d01cace8ca2df47a078e031
 <em><strong>"Construisez une API sécurisée pour une application d'avis gastronomiques"</strong></em>
   [Voir le projet sur OpenClassrooms](https://openclassrooms.com/fr/projects/676/assignment)
 <hr>
